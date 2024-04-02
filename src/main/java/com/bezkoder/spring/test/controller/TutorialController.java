@@ -54,7 +54,7 @@ public class TutorialController {
     Optional<Tutorial> tutorialData = tutorialRepository.findById(id);
 
     if (tutorialData.isPresent()) {
-      return new ResponseEntity<>(tutorialData.get(), HttpStatus.NO_CONTENT);
+      return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -99,7 +99,7 @@ public class TutorialController {
   public ResponseEntity<HttpStatus> deleteAllTutorials() {
     try {
       tutorialRepository.deleteAll();
-      return new ResponseEntity<>(HttpStatus.OK);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
